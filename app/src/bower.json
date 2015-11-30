@@ -12,7 +12,6 @@
   "private": true,
   "dependencies": {
     "angular": "~1.4.8",
-    "angular-route": "~1.4.8",
     "jquery": "~2.1.4",
     "restangular": "~1.5.1",
     "angular-translate": "~2.8.1",
@@ -20,6 +19,19 @@
     "ng-file-upload": "~10.1.0",
     "textAngular": "~1.4.6",
     "angular-filter": "~0.5.8",
-    "angular-local-storage": "~0.2.3"
+    "angular-local-storage": "~0.2.3",
+    "angular-ui-router": "~0.2.15",
+    "angular-sanitize": "~1.4.8",
+    "oclazyload": "~1.0.9",
+    "bootstrap": "~3.3.6",
+    "jquery-ui": "~1.11.4",
+    "PACE": "pace#~1.0.2",
+    "classie": "~1.0.1",
+    "jquery-bez": "bez#~1.0.11",
+    "jquery-unveil": "unveil#~1.3.0",
+    "iOSList": "ios-list#~2.0.2",
+    "jquery.actual": "~1.0.17",
+    "jquery.scrollbar": "~0.2.9",
+    "angular-ui": "~0.4.0"
   }
 }

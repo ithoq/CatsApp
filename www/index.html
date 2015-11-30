@@ -1,28 +1,65 @@
 <!doctype html>
-<html ng-app="ignition">
+<html ng-app="app">
 	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1"/><!--, target-densitydpi=device-dpi" /> -->
-		<meta name="mobile-web-app-capable" content="yes"/>
-		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <link rel="apple-touch-icon" href="pages/ico/60.png">
+	    <link rel="apple-touch-icon" sizes="76x76" href="pages/ico/76.png">
+	    <link rel="apple-touch-icon" sizes="120x120" href="pages/ico/120.png">
+	    <link rel="apple-touch-icon" sizes="152x152" href="pages/ico/152.png">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-touch-fullscreen" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 		<!-- <link rel="icon" href="favicon.ico" /> -->
+		<link rel="stylesheet" href="/src/bower_components/jquery.scrollbar/jquery.scrollbar.css"/>
+		<link rel="stylesheet" href="/src/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="/src/bower_components/font-awesome/css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="/src/bower_components/textAngular/dist/textAngular.css"/>
-		<link rel="stylesheet" href="/src/index.css"/>
+		<link rel="stylesheet" href="/src/bower_components/angular-ui/build/angular-ui.min.css"/>
+		<link rel="stylesheet" href="/src/assets/plugins/pace/pace-theme-flash.css"/>
+		<link rel="stylesheet" href="/src/pages/css/pages.css"/>
+		<link rel="stylesheet" href="/src/pages/css/pages-icons.css"/>
+		<link rel="stylesheet" href="/src/assets/css/style.css"/>
 
+		<link id="lazyload_placeholder">
 		<title>Ignition Program</title>
 		<base href="/">
+		<script type="text/javascript">
+		    window.onload = function() {
+		        // fix for windows 8
+		        if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
+		            document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="pages/css/windows.chrome.fix.css" />'
+		    }
+	    </script>
 	</head>
-	<body ng-controller="AppCtrl">
+	<body  ng-controller="AppCtrl" class="fixed-header" ng-class="{
+	'bg-master-lighter': is('app.extra.timeline'),
+	'no-header': is('app.social') || is('app.calendar') || is('app.maps.vector') || is('app.maps.google'),
+	'menu-pin' : app.layout.menuPin,
+	'menu-behind' : app.layout.menuBehind
+	 }">
 		<!-- <ng-include class="ng-cloak" src="global.include[0]"></ng-include> -->
-		<section class="ng-cloak" ng-view style="min-height: calc(100vh - 0px);"></section>
+		<div class="full-height ng-cloak" ui-view></div>
+		<!-- <section class="ng-cloak" ng-view style="min-height: calc(100vh - 0px);"></section> -->
 		<!-- <ng-include class="ng-cloak" src="global.include[1]"></ng-include>
 		<ng-include class="ng-cloak" src="global.include[2]"></ng-include> -->
 		<!-- <script src='https://www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded' async defer></script> -->
 		<!-- <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script> -->
+		<script type="text/javascript" src="/src/bower_components/PACE/pace.min.js"></script>
 		<script type="text/javascript" src="/src/bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/jquery-ui/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/jquery.actual/jquery.actual.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/jquery-bez/jquery.bez.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/jquery-unveil/jquery.unveil.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/iOSList/dist/js/jquery.ioslist.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/classie/classie.js"></script>
 		<script type="text/javascript" src="/src/bower_components/angular/angular.min.js"></script>
-		<script type="text/javascript" src="/src/bower_components/angular-route/angular-route.js"></script>
+		<script type="text/javascript" src="/src/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script type="text/javascript" src="/src/bower_components/angular-ui/build/angular-ui.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="/src/bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
 		<script type="text/javascript" src="/src/bower_components/lodash/lodash.min.js"></script>
 		<script type="text/javascript" src="/src/bower_components/restangular/dist/restangular.min.js"></script>
 		<script type="text/javascript" src="/src/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
@@ -33,9 +70,22 @@
 		<script type="text/javascript" src="/src/bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
 		<script type="text/javascript" src="/src/bower_components/textAngular/dist/textAngular.min.js"></script>
 		<script type="text/javascript" src="/src/bower_components/angular-filter/dist/angular-filter.min.js"></script>
-		<script type="text/javascript" src="/src/controllers/app.js"></script>
-		<script type="text/javascript" src="/src/conf/config.js"></script>
-		<script type="text/javascript" src="/src/controllers/home.ctrl.js"></script>
+		<script type="text/javascript" src="/src/pages/js/pages.js"></script>
+		<script type="text/javascript" src="/src/assets/plugins/modernizr.custom.js"></script>
+		<script type="text/javascript" src="/src/assets/js/app.js"></script>
+		<script type="text/javascript" src="/src/assets/js/config.js"></script>
+		<script type="text/javascript" src="/src/assets/js/config.lazyload.js"></script>
+		<script type="text/javascript" src="/src/assets/js/main.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/pg-sidebar.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/cs-select.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/pg-dropdown.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/pg-form-group.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/pg-navigate.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/pg-portlet.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/pg-tab.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/pg-search.js"></script>
+		<script type="text/javascript" src="/src/assets/js/directives/skycons.js"></script>
+		<script type="text/javascript" src="/src/assets/js/controllers/search.js"></script>
 
 	</body>
 </html>
