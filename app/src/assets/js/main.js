@@ -4,7 +4,7 @@
  * ============================================================ */
 
 angular.module('app')
-    .controller('AppCtrl', ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state) {
+    .controller('AppCtrl', ['$scope', '$rootScope', '$state', 'Restangular', '$translate', function($scope, $rootScope, $state, Restangular, $translate) {
 
         // App globals
         $scope.app = {
@@ -17,6 +17,12 @@ angular.module('app')
             },
             author: 'Revox'
         }
+
+        $scope.rest = {
+            login: Restangular.all('login/')
+        }
+
+        $translate.use('fr');
 
         // Checks if the given state is the current state
         $scope.is = function(name) {

@@ -1,0 +1,18 @@
+<div layout="row" layout-align="center center" style="height:100%">
+    <div layout="column" layout-padding class="md-whiteframe-2dp" flex="30">
+        <form name="loginForm" layout="column" layout-align="start center">
+            <div pg-form-group class="form-group form-group-default large" ng-class="{required: loginForm.username.$invalid}">
+                <label for="exampleInputEmail1">{{ 'loginPage:username' | translate }}</label>
+                <input type="text" name="username" class="form-control" ng-model="login.input.username" required>
+            </div>
+            <div pg-form-group class="form-group form-group-default large" ng-class="{required: loginForm.password.$invalid}">
+                <label for="exampleInputEmail1">{{ 'loginPage:password' | translate }}</label>
+                <input type="password" name="password" class="form-control" ng-model="login.input.password" required>
+            </div>
+            <button class="btn btn-success large" ng-disabled="loginForm.$invalid" ng-click="submitLogin()">{{ 'loginPage:submit' | translate }}</button>
+        </form>
+        <a>{{ 'loginPage:forgot' | translate }}</a>
+        <p align="center">{{ 'loginPage:createInfo' | translate }}</p>
+        <button flex class="btn" ng-click="goTo()">{{ 'loginPage:create' | translate }}</button>
+    </div>
+</div>

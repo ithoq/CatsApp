@@ -1,0 +1,8 @@
+{
+	"loginPage:username" : "Nom d'utilisateur",
+	"loginPage:password" : "Mot de passe",
+	"loginPage:submit" : "Envoyer",
+	"loginPage:forgot" : "Mot de passe oublié",
+	"loginPage:createInfo" : "Vous n'avez pas de compte ?",
+	"loginPage:create" : "Créer un compte"
+}

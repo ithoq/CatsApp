@@ -35,6 +35,9 @@ var config = {
 		'src/bower_components/classie/classie.js',
 
 		'src/bower_components/angular/angular.min.js',
+		'src/bower_components/angular-material/angular-material.min.js',
+		'src/bower_components/angular-animate/angular-animate.min.js',
+		'src/bower_components/angular-aria/angular-aria.min.js',
 		'src/bower_components/angular-ui-router/release/angular-ui-router.js',
 		'src/bower_components/angular-ui/build/angular-ui.min.js',
 		'src/bower_components/angular-sanitize/angular-sanitize.min.js',
@@ -51,6 +54,7 @@ var config = {
 		'src/bower_components/angular-filter/dist/angular-filter.min.js'
 	],
 	cssDependenciesFiles: [
+		'src/bower_components/angular-material/angular-material.min.css',
 		'src/bower_components/jquery.scrollbar/jquery.scrollbar.css',
 		'src/bower_components/bootstrap/dist/css/bootstrap.min.css',
 		'src/bower_components/font-awesome/css/font-awesome.min.css',
@@ -73,7 +77,9 @@ var config = {
 		'src/assets/js/directives/pg-tab.js',
 		'src/assets/js/directives/pg-search.js',
 		'src/assets/js/directives/skycons.js',
-		'src/assets/js/controllers/search.js'
+		'src/assets/js/controllers/home.js',
+		'src/assets/js/controllers/search.js',
+		'src/assets/js/controllers/login.js'
 	],
 	cssBaseFiles: [
 		'src/assets/plugins/pace/pace-theme-flash.css',
@@ -90,12 +96,13 @@ var config = {
 	wwwDir: '../www/',
 	lang: 'src/translate/**',
 	pages: 'pages/**',
-	symlink: 'src'
-	//htaccess: 'src/.htaccess'
+	symlink: 'src',
+	htaccess: 'src/.htaccess'
 };
 
 gulp.task('default', [
 	'build.www.html.release',
+	'build.www.htaccess',
 	'build.www.pages',
 	'build.www.img',
 	'build.www.tmpl', 
@@ -104,6 +111,7 @@ gulp.task('default', [
 
 gulp.task('debug', [
 	'build.www.html.debug',
+	'build.www.htaccess',
 	'build.www.pages',
 	'build.www.symlink.src', 
 	'build.www.symlink.tmpl', 
@@ -156,10 +164,10 @@ gulp.task('build.www.symlink.lang', ['clean'], function() {
 	.pipe(sym(config.wwwDir + 'translate'));
 });
 
-/*gulp.task('build.www.htaccess', ['clean'], function() {
+gulp.task('build.www.htaccess', ['clean'], function() {
 	return gulp.src(config.htaccess)
 	.pipe(gulp.dest(config.wwwDir))
-});*/
+});
 
 /*gulp.task('build.www.favicon', function() {
 	return gulp.src(config.favicon)
@@ -182,7 +190,6 @@ gulp.task('build.dep.js', ['clean'], function() {
 
 gulp.task('build.js', ['clean'], function() {
 	return gulp.src(config.jsBaseFiles)
-	.pipe(addsrc(config.jsConfRelease))
 	.pipe(concat('ignition-program.js'))
 	.pipe(insert.prepend(config.banner))
 	.pipe(ngAnnotate())

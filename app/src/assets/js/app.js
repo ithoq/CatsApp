@@ -9,6 +9,11 @@
 angular.module('app', [
     'ui.router',
     'ui',
-    'oc.lazyLoad'
+    'oc.lazyLoad',
+    'ngMaterial',
+    'restangular',
+    'ngFileUpload', 
+    'pascalprecht.translate',
+ 	'LocalStorageModule'
 ]);
  

@@ -1,0 +1,8 @@
+{
+	"loginPage:username" : "Username",
+	"loginPage:password" : "Password",
+	"loginPage:submit" : "Submit",
+	"loginPage:forgot" : "Forgot password ?",
+	"loginPage:createInfo" : "Do not have an account ?",
+	"loginPage:create" : "Create an accompte"
+}
