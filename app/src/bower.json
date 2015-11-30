@@ -1,0 +1,25 @@
+{
+  "name": "ignition program",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Ignipro/CatsApp",
+  "authors": [
+    "elbaid@gmail.com"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "jquery": "~2.1.4",
+    "restangular": "~1.5.1",
+    "angular-translate": "~2.8.1",
+    "angular-translate-loader-partial": "~2.8.1",
+    "ng-file-upload": "~10.1.0",
+    "textAngular": "~1.4.6",
+    "angular-filter": "~0.5.8",
+    "angular-local-storage": "~0.2.3"
+  }
+}

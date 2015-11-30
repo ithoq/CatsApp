@@ -1,0 +1,4 @@
+/app/node_modules
+/www/src*
+/www/views*
+/www/translate*

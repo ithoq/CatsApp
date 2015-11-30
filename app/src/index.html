@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="ignition">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1"/><!--, target-densitydpi=device-dpi" /> -->
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<!-- <link rel="icon" href="favicon.ico" /> -->
+		<link rel="stylesheet" href="GULP_REPLACE"/>
+		<title>Ignition Program</title>
+		<base href="/">
+	</head>
+	<body ng-controller="AppCtrl">
+		<!-- <ng-include class="ng-cloak" src="global.include[0]"></ng-include> -->
+		<section class="ng-cloak" ng-view style="min-height: calc(100vh - 0px);"></section>
+		<!-- <ng-include class="ng-cloak" src="global.include[1]"></ng-include>
+		<ng-include class="ng-cloak" src="global.include[2]"></ng-include> -->
+		<!-- <script src='https://www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded' async defer></script> -->
+		<!-- <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script> -->
+		<script type="text/javascript" src="GULP_REPLACE"></script>
+	</body>
+</html>
