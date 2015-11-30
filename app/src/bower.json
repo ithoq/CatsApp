@@ -35,6 +35,7 @@
     "angular-ui": "~0.4.0",
     "angular-material": "~0.11.4",
     "angular-datatables": "~0.5.1",
-    "datatables": "~1.10.10"
+    "datatables": "~1.10.10",
+    "datatables-colreorder": "~1.3.0"
   }
 }

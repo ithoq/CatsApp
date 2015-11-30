@@ -34,6 +34,7 @@ var config = {
 		'src/bower_components/iOSList/dist/js/jquery.ioslist.min.js',
 		'src/bower_components/classie/classie.js',
 		'src/bower_components/datatables/media/js/jquery.dataTables.min.js',
+		'src/bower_components/datatables-colreorder/js/dataTables.colReorder.js',
 
 		'src/bower_components/angular/angular.min.js',
 		'src/bower_components/angular-material/angular-material.min.js',
