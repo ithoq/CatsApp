@@ -16,8 +16,8 @@ angular.module('app').controller('LoginCtrl', ['$scope', '$state', '$http', 'loc
             localStorageService.set('last_name', credential.user.last_name);
             localStorageService.set('user_type', credential.user.user_type);
             localStorageService.set('username', credential.user.username);
-            $http.defaults.headers.common['Authorization'] = 'Bearer ' + credential.key;
-			$state.go('app.dashboard');
+            $http.defaults.headers.common['Authorization'] = 'Token ' + credential.key;
+			$state.go('team.candidates');
         }, function(err) {
             console.log(err);
         });

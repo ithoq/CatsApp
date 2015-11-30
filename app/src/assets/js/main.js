@@ -4,7 +4,7 @@
  * ============================================================ */
 
 angular.module('app')
-    .controller('AppCtrl', ['$scope', '$rootScope', '$state', 'Restangular', '$translate', function($scope, $rootScope, $state, Restangular, $translate) {
+    .controller('AppCtrl', ['$scope', '$rootScope', '$state', 'Restangular', '$translate', 'localStorageService', '$http', function($scope, $rootScope, $state, Restangular, $translate, localStorageService, $http) {
 
         // App globals
         $scope.app = {
@@ -15,12 +15,17 @@ angular.module('app')
                 menuBehind: false,
                 theme: 'pages/css/pages.css'
             },
-            author: 'Revox'
+            author: ''
         }
 
         $scope.rest = {
-            login: Restangular.all('login/')
+            login: Restangular.all('login/'),
+            teamCandidates : Restangular.all('candidates/')
         }
+
+        var token = localStorageService.get('token');
+        if (token != null);
+            $http.defaults.headers.common['Authorization'] = 'Token ' + token;
 
         $translate.use('fr');
 

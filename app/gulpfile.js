@@ -33,6 +33,7 @@ var config = {
 		'src/bower_components/jquery-unveil/jquery.unveil.min.js',
 		'src/bower_components/iOSList/dist/js/jquery.ioslist.min.js',
 		'src/bower_components/classie/classie.js',
+		'src/bower_components/datatables/media/js/jquery.dataTables.min.js',
 
 		'src/bower_components/angular/angular.min.js',
 		'src/bower_components/angular-material/angular-material.min.js',
@@ -51,7 +52,8 @@ var config = {
 		'src/bower_components/textAngular/dist/textAngular-rangy.min.js',
 		'src/bower_components/textAngular/dist/textAngular-sanitize.min.js',
 		'src/bower_components/textAngular/dist/textAngular.min.js',
-		'src/bower_components/angular-filter/dist/angular-filter.min.js'
+		'src/bower_components/angular-filter/dist/angular-filter.min.js',
+		'src/bower_components/angular-datatables/dist/angular-datatables.min.js'
 	],
 	cssDependenciesFiles: [
 		'src/bower_components/angular-material/angular-material.min.css',

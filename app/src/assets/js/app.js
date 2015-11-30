@@ -14,6 +14,7 @@ angular.module('app', [
     'restangular',
     'ngFileUpload', 
     'pascalprecht.translate',
- 	'LocalStorageModule'
+ 	'LocalStorageModule',
+ 	'datatables'
 ]);
  

@@ -13,15 +13,32 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', '$ocLazyLo
             templateUrl: "tpl/login.html",
             controller: 'LoginCtrl'
         })
-        .state('app', {
+        .state('team', {
             abstract: true,
             url: "/",
             templateUrl: "tpl/app.html"
         })
-        .state('app.dashboard', {
-            url: "home",
-            templateUrl: "tpl/home.html",
-            controller: 'HomeCtrl',
+        .state('team.candidates', {
+            url: "candidates",
+            templateUrl: "tpl/team.candidates.html",
+            controller: 'TeamCandidatesCtrl',
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load(['dataTables'], {
+                            insertBefore: '#lazyload_placeholder'
+                        })
+                        .then(function() {
+                            return $ocLazyLoad.load([
+                                'assets/js/controllers/team.candidates.js'
+                            ]);
+                        });
+                }]
+            }
+        })
+        .state('team.candidate', {
+            url: "candidate/:candidateID",
+            templateUrl: "tpl/team.candidate.html",
+            controller: 'TeamCandidateCtrl',
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -35,7 +52,7 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', '$ocLazyLo
                         })
                         .then(function() {
                             return $ocLazyLoad.load([
-                                'assets/js/controllers/home.js'
+                                'assets/js/controllers/team.candidate.js'
                             ]);
                         });
                 }]
@@ -53,6 +70,19 @@ angular.module('app').config(['$sceDelegateProvider', function($sceDelegateProvi
 
 angular.module('app').config(['RestangularProvider', function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://ignition-cats-back.herokuapp.com/api/v1/');
+
+    RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+        var extractedData;
+        // .. to look for getList operations
+        if (operation === "getList" && data.results != undefined) {
+        // .. and handle the data and meta data
+            extractedData = data.results;
+            extractedData.meta = data;
+        } else {
+            extractedData = data;
+        }
+        return extractedData;
+    });
 }]);
 
 angular.module('app').config(['localStorageServiceProvider', function (localStorageServiceProvider) {

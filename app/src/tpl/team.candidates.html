@@ -1,0 +1,16 @@
+<div layout-padding>
+
+	<table datatable="ng" class="row-border hover table">
+		<thead>
+			<tr>
+				<th ng-repeat="col in local.columns">{{ col }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="candidate in local.candidates">
+				<td ng-repeat="col in local.columns">{{ candidate[col] }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
