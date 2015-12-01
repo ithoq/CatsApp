@@ -209,16 +209,11 @@ angular.module('app')
                         'assets/plugins/angular-wizard/angular-wizard.min.js'
                     ]
                 }, {
-                    name: 'dataTables',
+                    name: 'datatables',
                     files: [
-                        'assets/plugins/jquery-datatable/media/css/jquery.dataTables.css',
-                        'assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css',
-                        'assets/plugins/datatables-responsive/css/datatables.responsive.css',
-                        'assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js',
-                        'assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js',
-                        'assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js',
-                        'assets/plugins/datatables-responsive/js/datatables.responsive.js',
-                        'assets/plugins/datatables-responsive/js/lodash.min.js'
+                        'src/bower_components/datatables/media/css/jquery.dataTables.min.css',
+                        'src/bower_components/angular-datatables/dist/angular-datatables.min.js',
+                        'src/bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.min.js'
                     ],
                     serie: true // load in the exact order
                 }, {

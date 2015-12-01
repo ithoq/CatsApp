@@ -35,6 +35,7 @@ var config = {
 		'src/bower_components/classie/classie.js',
 		'src/bower_components/datatables/media/js/jquery.dataTables.min.js',
 		'src/bower_components/datatables-colreorder/js/dataTables.colReorder.js',
+		'src/bower_components/chosen/chosen.jquery.min.js',
 
 		'src/bower_components/angular/angular.min.js',
 		'src/bower_components/angular-material/angular-material.min.js',
@@ -54,7 +55,7 @@ var config = {
 		'src/bower_components/textAngular/dist/textAngular-sanitize.min.js',
 		'src/bower_components/textAngular/dist/textAngular.min.js',
 		'src/bower_components/angular-filter/dist/angular-filter.min.js',
-		'src/bower_components/angular-datatables/dist/angular-datatables.min.js'
+		'src/bower_components/angular-chosen-localytics/chosen.js'
 	],
 	cssDependenciesFiles: [
 		'src/bower_components/angular-material/angular-material.min.css',
@@ -62,15 +63,17 @@ var config = {
 		'src/bower_components/bootstrap/dist/css/bootstrap.min.css',
 		'src/bower_components/font-awesome/css/font-awesome.min.css',
 		'src/bower_components/textAngular/dist/textAngular.css',
-		'src/bower_components/angular-ui/build/angular-ui.min.css'
+		'src/bower_components/angular-ui/build/angular-ui.min.css',
+		'src/bower_components/chosen/chosen.min.css',
+		'src/bower_components/angular-chosen-localytics/chosen-spinner.css'
 	],
 	jsBaseFiles: [
 		'src/pages/js/pages.js',
 		'src/assets/plugins/modernizr.custom.js',
 		'src/assets/js/app.js',
+		'src/assets/js/controllers/main.js',
 		'src/assets/js/config.js',
 		'src/assets/js/config.lazyload.js',
-		'src/assets/js/main.js',
 		'src/assets/js/directives/pg-sidebar.js',
 		'src/assets/js/directives/cs-select.js',
 		'src/assets/js/directives/pg-dropdown.js',

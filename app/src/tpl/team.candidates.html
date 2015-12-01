@@ -1,14 +1,59 @@
 <div layout-padding>
-
+	<div layout="row" layout-align="space-between">
+		<div layout="column">
+			<div layout="row" layout-align="start center" ng-repeat="filter in local.filter">
+				<select chosen ng-model="filter.col" ng-options="col.name for col in local.columns">
+					<option value=""></option>
+				</select>
+				<select ng-if="filter.col!=''" chosen ng-model="filter.type" ng-options="type for type in local.filterType">
+					<option value=""></option>
+				</select>
+				<input ng-show="filter.type!=''" type="text" ng-model="filter.input">
+				<md-button class="md-fab md-mini" aria-label="Remove filter" ng-click="removeFilter()">
+		            <md-icon md-font-icon="add_circle"></md-icon>
+		        </md-button>
+			</div>
+		</div>
+		<div layout="row" layout-align="end end">
+			<md-button class="md-fab md-mini" aria-label="Add filter" ng-click="addFilter()">
+	            <md-icon md-font-icon="add_circle"></md-icon>
+	        </md-button>
+		</div>
+	</div>
+	<div layout="row" layout-align="end">
+		<md-menu-bar>
+			<md-menu>
+				<button ng-click="$mdOpenMenu()">
+					Columns
+				</button>
+				<md-menu-content>
+					<md-menu-item>
+						<input type="text" ng-model="column">
+					</md-menu-item>
+					<md-menu-item ng-repeat="col in local.columns | filter:{name: column}" layout-padding>
+						<div class="checkbox check-default">
+						    <input type="checkbox" ng-model="col.selected" id="checkbox{{$index}}">
+						    <label for="checkbox{{$index}}">{{ col.name }}</label>
+						</div>
+					</md-menu-item>
+				</md-menu-content>
+			</md-menu>
+		</md-menu-bar>
+	</div>
 	<table datatable="ng" dt-options="local.options" class="row-border hover table">
 		<thead>
 			<tr>
-				<th ng-repeat="col in local.columns">{{ col }}</th>
+				<th ng-repeat="col in local.columns" ng-show="col.selected">
+					<div layout="row" layout-align="space-between">
+						{{ col.name }}
+						<grip ng-if="!$last" class="header-grip" class-ref="grip"></grip>
+					</div>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="candidate in local.candidates">
-				<td ng-repeat="col in local.columns">{{ candidate[col] }}</td>
+			<tr ng-repeat="candidate in local.candidates | customFilter:local.filter" class="grip">
+				<td ng-repeat="col in local.columns" ng-show="col.selected">{{ candidate[col.name] }}</td>
 			</tr>
 		</tbody>
 	</table>

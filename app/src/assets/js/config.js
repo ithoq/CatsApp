@@ -24,7 +24,7 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', '$ocLazyLo
             controller: 'TeamCandidatesCtrl',
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                    return $ocLazyLoad.load(['dataTables'], {
+                    return $ocLazyLoad.load(['datatables'], {
                             insertBefore: '#lazyload_placeholder'
                         })
                         .then(function() {

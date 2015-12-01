@@ -15,6 +15,6 @@ angular.module('app', [
     'ngFileUpload', 
     'pascalprecht.translate',
  	'LocalStorageModule',
- 	'datatables'
+ 	'localytics.directives'
 ]);
  

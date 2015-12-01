@@ -6,3 +6,17 @@
 .large {
 	width: 100%;
 }
+
+.header-grip {
+	float: right;
+	width: 10px;
+	height: 20px;
+}
+
+.header-grip:hover {
+	cursor: col-resize;
+}
+
+.header-grip-th {
+	display: inline-block;
+}
