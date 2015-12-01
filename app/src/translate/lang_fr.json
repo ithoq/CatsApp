@@ -1,6 +1,4 @@
 {
-// loginPage \\
-
 	"loginPage:username" : "Nom d'utilisateur",
 	"loginPage:password" : "Mot de passe",
 	"loginPage:submit" : "Envoyer",
@@ -9,14 +7,10 @@
 	"loginPage:create" : "Créer un compte",
 
 
-// teamPage \\
-
-	// Model information
 	"teamPage:is_active": "is_active",
 	"teamPage:date_created": "date_created",
 	"teamPage:date_modified": "date_modified",
 
-	// General information
 	"teamPage:id": "id",
 	"teamPage:current_status_id": "current_status_id",
 	"teamPage:contact_id": "contact_id",
@@ -33,7 +27,6 @@
 	"teamPage:general_title_private": "general_title_private",
 	"teamPage:general_title": "general_title",
 
-	// Contact related model
 	"teamPage: phone_home_country_code": "phone_home_country_code",
 	"teamPage: last_name": "last_name",
 	"teamPage: phone_cell_country_code": "phone_cell_country_code",
@@ -55,7 +48,6 @@
 	"teamPage: url_twitter": "url_twitter",
 	"teamPage: country": "country",
 
-	// Questionaire
 	"teamPage:questionnaire_frame_availability_date": "questionnaire_frame_availability_date",
 	"teamPage:questionnaire_frame_candidate_track_id": "questionnaire_frame_candidate_track_id",
 	"teamPage:questionnaire_frame_mobility": "questionnaire_frame_mobility",
@@ -96,12 +88,10 @@
 	"teamPage:questionnaire_source_other": "questionnaire_source_other",
 	"teamPage:questionnaire_trophy_link": "questionnaire_trophy_link",
 
-	// Challenge
 	"teamPage:challenge_review_grade": "challenge_review_grade",
 	"teamPage:challenge_review_strenghs": "challenge_review_strenghs",
 	"teamPage:challenge_review_weaknesses": "challenge_review_weaknesses",
 
-	// Interview Grades
 	"teamPage:interview_grade_af_manager": "interview_grade_af_manager",
 	"teamPage:interview_grade_code": "interview_grade_code",
 	"teamPage:interview_grade_communication": "interview_grade_communication",
@@ -137,18 +127,15 @@
 	"teamPage:interview_personality_grade_startup_setup": "interview_personality_grade_startup_setup",
 	"teamPage:interview_review_grade": "interview_review_grade",
 
-	// Interview text fields
 	"teamPage:interview_comments_for_referals": "interview_comments_for_referals",
 	"teamPage:interview_personality_mbti": "interview_personality_mbti",
 	"teamPage:interview_review_strengths": "interview_review_strengths",
 	"teamPage:interview_review_weaknesses": "interview_review_weaknesses",
 
-	// Referals
 	"teamPage:referals_review_1_grade": "referals_review_1_grade",
 	"teamPage:referals_review_1_quotations": "referals_review_1_quotations",
 	"teamPage:referals_review_1_watchout": "referals_review_1_watchout",
 	"teamPage:referals_review_2_grade": "referals_review_2_grade",
 	"teamPage:referals_review_2_quotations": "referals_review_2_quotations",
-	"teamPage:referals_review_2_watchout": "referals_review_2_watchout",
-
+	"teamPage:referals_review_2_watchout": "referals_review_2_watchout"
 }

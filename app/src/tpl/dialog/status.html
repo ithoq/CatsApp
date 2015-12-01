@@ -1,0 +1,32 @@
+<md-dialog aria-label="Dialog status">
+	<md-dialog-content layout-padding>
+		<div class="md-dialog-content-body" layout-padding layout="row">
+			<div flex="50">
+				<md-radio-group ng-model="current_status['pk']">
+			      	<md-radio-button ng-repeat="stat in status" value="{{stat['pk']}}" class="md-primary">{{stat['process_name'] + '-' + stat['step_name']}}</md-radio-button>
+			    </md-radio-group>
+				<!-- <div class="radio radio-default">
+					<div ng-repeat="stat in status">
+				    	<input type="radio" ng-model="current_status['pk']" ng-value="stat['pk']" id="radio{{$index}}">
+				    	<label for="radio{{$index}}">{{stat['process_name'] + '-' + stat['step_name']}}</label>
+				    </div>
+				</div> -->
+			</div>
+			<div flex="50" layout="column">
+				<div ng-repeat="trigger in triggers" ng-init="trigger.is_default==undefined? trigger.is_default=false: ''" layout="column">
+					<div class="checkbox check-default">
+					    <input type="checkbox" ng-model="trigger.is_default" id="dialogCheckbox{{$index}}">
+					    <label for="dialogCheckbox{{$index}}">{{ trigger.name }}</label>
+					</div>
+					<div ng-show="trigger.is_default">
+						<text-angular ng-model="trigger.content"></text-angular>
+					</div>
+				</div>
+			</div>
+		</div>
+	</md-dialog-content>
+	<div class="md-actions" layout="row">
+		<md-button ng-click="save()" class="md-raised md-primary">{{ 'save' | translate }}</md-button>
+		<md-button ng-click="close()" class="md-raised md-primary">{{ 'close' | translate }}</md-button>
+	</div>
+</md-dialog>

@@ -53,7 +53,10 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="candidate in local.candidates | customFilter:local.filter" class="grip">
-				<td ng-repeat="col in local.columns" ng-show="col.selected">{{ candidate[col.name] }}</td>
+				<td ng-repeat="col in local.columns" ng-show="col.selected">
+					<span ng-if="col.name!='current_status'">{{ candidate[col.name] }}</span>
+					<span ng-if="col.name=='current_status'" ng-click="openDialog($event, candidate['status'], candidate[col.name])">{{ candidate[col.name]['process_name'] + '-' + candidate[col.name]['step_name']}}</span>
+				</td>
 			</tr>
 		</tbody>
 	</table>

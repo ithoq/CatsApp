@@ -2,11 +2,12 @@
 
 /* Controllers */
 
-angular.module('app').controller('TeamCandidatesCtrl', ['$scope', '$state', 'DTOptionsBuilder', 'DTColumnBuilder', function($scope, $state, DTOptionsBuilder, DTColumnBuilder) {
+angular.module('app').controller('TeamCandidatesCtrl', ['$scope', '$state', 'DTOptionsBuilder', 'DTColumnBuilder', '$mdDialog', function($scope, $state, DTOptionsBuilder, DTColumnBuilder, $mdDialog) {
 
 	$scope.local = {
 		options: DTOptionsBuilder.newOptions().withOption('colReorder', true).withOption('autoWidth', false),
 		columns: [
+			{name: 'current_status', selected: true, order: 0},
 			{name: 'first_name', selected: true, order: 0},
 			{name: 'date_created', selected: true, order: 0},
 			{name: 'date_modified', selected: true, order: 0},
@@ -20,19 +21,23 @@ angular.module('app').controller('TeamCandidatesCtrl', ['$scope', '$state', 'DTO
 	$scope.rest.teamCandidates.getList({format: 'json'}).then(function(candidates) {
 		console.log(candidates);
 		$scope.local.candidates = candidates;
-		for (var i = 0; i < candidates.length; ++i) {
-			angular.forEach(candidates[i], function(value, key) {
+		angular.forEach(candidates, function(candidate) {
+		//for (var i = 0; i < candidates.length; ++i) {
+			angular.forEach(candidate, function(value, key) {
 				if (key == 'contact')
-					angular.forEach(candidates[i]['contact'], function(value, key) {
+					angular.forEach(candidate['contact'], function(value, key) {
 						if (key != 'date_created' && key != 'date_modified' && key != 'is_active')
-						candidates[i][key] = value;
-						//$scope.local.columns.push({name: key2, selected: true, order: 0});
-
+						candidate[key] = value;
 					});
-				//else
-					//$scope.local.columns.push({name: key, selected: true, order: 0});
 			});
-		}
+
+			candidate.getList('status/', {format: 'json'}).then(function(status) {
+				console.log(status);
+				candidate['status'] = status;
+			}, function(err) {
+
+			});
+		});
 	}, function(err) {
 		$state.go('login');
 	});
@@ -46,6 +51,46 @@ angular.module('app').controller('TeamCandidatesCtrl', ['$scope', '$state', 'DTO
 		$scope.local.filter.splice(index, 1);
 	}
 
+	$scope.openDialog = function(event, status, current_status) {
+		console.log(status, current_status);
+		$mdDialog.show({
+			templateUrl: '/tpl/dialog/status.html',
+			controller: 'DialogStatusController',
+			hasBackdrop: true,
+			clickOutsideToClose: false,
+			escapeToClose: true,
+			parent: angular.element('body'),
+			locals: {
+				//candidate: candidate,
+				status: status,
+				current_status: current_status
+			}
+		});
+	}
+
+}]);
+
+angular.module('app').controller('DialogStatusController', ['$scope', 'status', 'current_status', '$mdDialog', 'Restangular', function ($scope, status, current_status, $mdDialog, Restangular) {
+
+	$scope.status = status;
+	$scope.current_status = current_status;
+	$scope.triggers = current_status['trigger'];
+
+	$scope.$watch(function() {return $scope.current_status;}, function(val) {
+		for (var i = 0; i < status.length; ++i) {
+			if (status[i].pk == $scope.current_status.pk)
+				$scope.triggers = $scope.status[i]['triggers'];
+		}
+		console.log(val, $scope.triggers);
+	}, true);
+
+	$scope.close = function() {
+		$mdDialog.hide();
+	};
+
+	/*$scope.save = function() {
+		Restangular.one('candidates/', $scope.current_status.pk)
+	}*/
 }]);
 
 angular.module('app').filter('customFilter', function() {

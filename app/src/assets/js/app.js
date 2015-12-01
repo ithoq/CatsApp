@@ -15,6 +15,7 @@ angular.module('app', [
     'ngFileUpload', 
     'pascalprecht.translate',
  	'LocalStorageModule',
- 	'localytics.directives'
+ 	'localytics.directives',
+ 	'textAngular'
 ]);
  

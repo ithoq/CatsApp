@@ -71,6 +71,10 @@ angular.module('app').config(['$sceDelegateProvider', function($sceDelegateProvi
 angular.module('app').config(['RestangularProvider', function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://ignition-cats-back.herokuapp.com/api/v1/');
 
+    RestangularProvider.setRestangularFields({
+      id: "pk",
+    });
+
     RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
         var extractedData;
         // .. to look for getList operations
